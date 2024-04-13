@@ -15,4 +15,19 @@ module.exports = {
     },
   },
   plugins: [],
+  colors: {
+    bg: '#fcd7d7',
+    main: '#ff6b6b',
+    mainAccent: '#ff3333', // not needed for shadcn
+  },
+  borderRadius: {
+    base: '5px'
+  },
+  boxShadow: {
+    base: '4px 4px 0px 0px rgba(0,0,0,1)',
+  },
+  translate: {
+    boxShadowX: '4px',
+    boxShadowY: '4px',
+  }
 };
