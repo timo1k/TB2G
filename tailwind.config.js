@@ -22,22 +22,21 @@ module.exports = {
         },
       },
       colors: {
-        bg: '#fcd7d7',
-        main: '#9e1b34',
-        mainAccent: '#ff3333', // not needed for shadcn
+        bg: "#fcd7d7",
+        main: "#9e1b34",
+        mainAccent: "#ff3333", // not needed for shadcn
       },
       borderRadius: {
-        base: '5px'
+        base: "5px",
       },
       boxShadow: {
-        base: '4px 4px 0px 0px rgba(0,0,0,1)',
+        base: "4px 4px 0px 0px rgba(0,0,0,1)",
       },
       translate: {
-        boxShadowX: '4px',
-        boxShadowY: '4px',
-      }
+        boxShadowX: "4px",
+        boxShadowY: "4px",
+      },
     },
   },
   plugins: [],
-
 };

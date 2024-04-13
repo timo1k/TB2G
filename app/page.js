@@ -56,6 +56,10 @@ export default function Home() {
           {" "}
           <Button>CREATE ME</Button>
         </Link>
+        <Link href={"/about"}>
+          {" "}
+          <Button>ABOUT ME</Button>
+        </Link>
 
         <Marquee
           items={[
