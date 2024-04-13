@@ -1,7 +1,7 @@
 import Button from "./_components/Button";
 import Accordion from "./_components/Accordion";
 import ImageCard from "./_components/ImageCard";
-
+import Link from "next/link";
 import Marquee from "./_components/Marquee";
 
 export default function Home() {
@@ -21,7 +21,10 @@ export default function Home() {
       items-center
       mx-10"
       >
-        <Button>Click me!</Button>
+        <Link href={"/insert"}>
+          {" "}
+          <Button>CREATE ME</Button>
+        </Link>
 
         <Marquee
           items={[
