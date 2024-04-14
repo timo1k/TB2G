@@ -3,7 +3,8 @@ import { FiPlus } from 'react-icons/fi'
 
 import { useEffect, useRef, useState } from 'react'
 
-export default function Accordion({question, answer}) {
+
+export default function Accordion({question, answer, }) {
   const [showContent, setShowContent] = useState(false)
   const [contentHeight, setContentHeight] = useState('0px')
   const contentRef = useRef(null)

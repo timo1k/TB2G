@@ -7,7 +7,7 @@ import { orderBy } from "firebase/firestore";
 import { query } from "firebase/firestore";
 import { BarChart } from "@mui/x-charts/BarChart";
 
-const bathroom = ({ params }) => {
+const building = ({ params }) => {
   // Accessing the id from params
   const id = params.buildingName;
 
@@ -127,13 +127,25 @@ const bathroom = ({ params }) => {
         <div className="mr-4 mt-6">
           <Accordion question="1st floor" answer="get shit on" />
         </div>
+        <h1 className="text-black text-3xl md:text-4xl lg:text-4xl xl:text-4xl pl-12 pt-7">
+            {id}
+        </h1>
 
-        <div className="mr-4 mt-6">
-          <Accordion question="1st floor" answer="get shit on" />
+        {/* floors to shit on */}
+        <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
+            <div className="mr-4 mt-6">
+                <Rating question="1st floor" answer="get shit on" />
+            </div>
+            
         </div>
-      </div>
+        
+        
+        
+        
     </div>
   );
 };
 
-export default bathroom;
+
+export default building
+
