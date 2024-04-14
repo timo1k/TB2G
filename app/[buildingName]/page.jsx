@@ -1,7 +1,8 @@
 import React from 'react'
 import Accordion from '../_components/Accordion'
+import Rating from '../_components/Rating'
 
-const bathroom = ({params}) => {
+const building = ({params}) => {
   // Accessing the id from params
   const id = params.buildingName;
 
@@ -22,19 +23,19 @@ const bathroom = ({params}) => {
         </h1>
 
         {/* floors to shit on */}
-        <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80 h-5">
+        <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
             <div className="mr-4 mt-6">
-                <Accordion question="1st floor" answer="get shit on" />
+                <Rating question="1st floor" answer="get shit on" />
             </div>
             
-            <div className="mr-4 mt-6">
-                <Accordion question="1st floor" answer="get shit on" />
-            </div>
         </div>
+        
+        
+        
         
     </div>
 
   )
 }
 
-export default bathroom
+export default building
