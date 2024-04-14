@@ -1,28 +1,39 @@
 "use client"
 import React, { useState, useEffect } from "react";
-import { collection, getDocs, db, orderBy, query } from "firebase/firestore";
-
+import { collection, getDocs,  orderBy, query } from "firebase/firestore";
+import { db } from "../firebase";
 // components
 import Accordion from "../_components/Accordion";
 import Rating from "../_components/Rating"; // Import the Rating component
-
+import Tabs from "../_components/Tabs";
 
 const Building = ({ params }) => {
   // Accessing the id from params
   const id = params.buildingName;
 
-  //fetch data for dynamicc stuff
+  //fetch data for dynamic stuff
   const [users, setUsers] = useState([]);
   const [floorData, setFloorData] = useState([]);
 
   const [clean, setClean] = useState([]);
   const [amen, setAmen] = useState([]);
-  const [rating, setRating] = useState([]);
   const [privacy, setPrivacy] = useState([]);
 
   const [cleanAvg, setCleanAvg] = useState();
   const [amenAvg, setAmenAvg] = useState();
   const [privacyAvg, setPrivacyAvg] = useState();
+
+  const [activeTab, setActiveTab] = useState(1);
+
+  const floorArray = (users) => {
+
+    if (users.length === 0) return [];
+    let floorArray = [];
+    for (let i = 0; i < users.length; i++) {
+      floorArray.push(i + 1);
+    }
+    return floorArray;
+  };
 
   useEffect(() => {
     async function fetchItems() {
@@ -41,9 +52,8 @@ const Building = ({ params }) => {
         const filteredData = data.filter((item) => item.Building === id);
 
         setUsers(filteredData);
-        console.log(filteredData);
+        // console.log(filteredData);
 
-        const ratingValues = filteredData.map((item) => parseInt(item.rating));
 
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
@@ -55,13 +65,8 @@ const Building = ({ params }) => {
 
         setClean(cleanValues);
         setAmen(amenValues);
-        setRating(ratingValues);
         setPrivacy(privacyValues);
 
-        console.log("clean: " + cleanValues);
-        console.log("amen: " + amenValues);
-        console.log("rating: " + ratingValues);
-        console.log("privacy: " + privacyValues);
 
         // Calculate average values
         const cleanAvg =
@@ -75,17 +80,13 @@ const Building = ({ params }) => {
         setCleanAvg(cleanAvg);
         setAmenAvg(amenAvg);
         setPrivacyAvg(privacyAvg);
-
-        console.log("cleanAvg: " + cleanAvg);
-        console.log("amenAvg: " + amenAvg);
-        console.log("privacyAvg: " + privacyAvg);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
     }
 
     fetchItems();
-    console.log(users);
+
   }, []);
 
   return (
@@ -99,23 +100,27 @@ const Building = ({ params }) => {
         TB2G
       </div>
 
-      <div className="">
+      <div className="mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
 
-        <h1 className="text-black text-3xl md:text-4xl lg:text-4xl xl:text-4xl">'
+        <h1 className="py-10 text-black text-3xl md:text-4xl lg:text-4xl xl:text-4xl">'
           {id}
         </h1>
 
-        <div className="flex justify-center">
+        <div className="flex flex-col justify-center text-center items-center ">
+
+          <div className="">
+            <Tabs tabsArray={floorArray(users)}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            />
+
+              {activeTab && (
+                  <Rating rating={users[activeTab - 1]}/>)}
+
+          </div>
 
         </div>
 
-      </div>
-
-      {/* floors to shit on */}
-      <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
-        <div className="mr-4 mt-6">
-          <Rating question="1st floor" answer="get shit on" />
-        </div>
       </div>
     </div>
   );

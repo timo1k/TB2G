@@ -38,6 +38,7 @@ export default function Home() {
 
   return (
     <main className="min-w-full max-w-full min-h-full h-screen bg-white">
+
       <div className="flex items-center justify-between w-full p-5 text-center font-bold text-6xl">
         <Link href={"/insert"}>
           <Button>CREATE ME</Button>
@@ -48,68 +49,78 @@ export default function Home() {
         </Link>
       </div>
 
-      <div
-        className="flex flex-col
-      justify-center
-      text-center
-      items-center
-      mx-10"
-      >
-        <Marquee
+      <Marquee
           items={[
             "Recently View",
             "Recently View",
             "Recently View",
             "Recently View",
-          ]}
-        ></Marquee>
+            "Recently View",
+            "Recently View",
+            "Recently View",
+          ]}/>
         <br></br>
-        <Accordion
-          question="is your mom poop?"
-          answer={<CustomLink href="/about">go to poop page</CustomLink>}
-        />
 
-        <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
-          <Link href={"/Wachman"}>
-            <div className="mr-4 mt-6">
-              <ImageCard
-                imageUrl="https://live.staticflickr.com/3679/12726907403_b2182559c8_b.jpg"
-                children={<div>Wachman</div>}
-              />
-            </div>
-          </Link>
-          <Link href={"/Tuttleman"}>
-            <div className="mr-4 mt-6">
-              <ImageCard
-                imageUrl="https://pbs.twimg.com/media/EyFEwFdXAAYSuhr.jpg:large"
-                children={<div>Tuttleman</div>}
-              />
-            </div>
-          </Link>
-          <Link href={"/SERC"}>
-            <div className="mr-4 mt-6">
-              <ImageCard
-                imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0k9SKvgfsoRgGrMYjB8SuU_MDEf3BUjA0Yv_rS0utg&s"
-                children={<div>SERC</div>}
-              />
-            </div>
-          </Link>
-        </div>
-        <br></br>
-        <h2 className="font-bold">Reviews</h2>
-        <BuildingInfo data={users} />
+      <div className=" flex flex-col justify-center text-center
+        items-center mx-10">
+          <Accordion
+            question="is your mom poop?"
+            answer={<CustomLink href="/about">go to poop page</CustomLink>}
+          />
+          <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
+            <Link href={"/Wachman"}>
+              <div className="mr-4 mt-6">
+                <ImageCard
+                  imageUrl="https://live.staticflickr.com/3679/12726907403_b2182559c8_b.jpg"
+                  children={<div>Wachman</div>}
+                />
+              </div>
+            </Link>
+            <Link href={"/Tuttleman"}>
+              <div className="mr-4 mt-6">
+                <ImageCard
+                  imageUrl="https://pbs.twimg.com/media/EyFEwFdXAAYSuhr.jpg:large"
+                  children={<div>Tuttleman</div>}
+                />
+              </div>
+            </Link>
+            <Link href={"/SERC"}>
+              <div className="mr-4 mt-6">
+                <ImageCard
+                  imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0k9SKvgfsoRgGrMYjB8SuU_MDEf3BUjA0Yv_rS0utg&s"
+                  children={<div>SERC</div>}
+                />
+              </div>
+            </Link>
+          </div>
+          <br></br>
+
+          <h2 className="font-bold">Reviews</h2>
+
+          <BuildingInfo data={users} />
       </div>
+
     </main>
   );
 }
 
 const BuildingInfo = ({ data }) => {
+
+  const rating = (item) => {
+
+    let sum =(parseInt(item.amenities) +
+                  parseInt(item.cleanliness) +
+                  parseInt(item.privacy)) / 3
+
+    return Math.round(sum * 10) / 10;
+  }
+
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {data.map((item, index) => (
         <div>
           <br></br>
-          <figure className="w-[1000px] overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
+          <figure className="w-[1000px] justify-between text-start overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
             <figcaption className="border-t-2 border-black p-4">
               <span>
                 <strong>Building:</strong> {item.Building}
@@ -119,10 +130,7 @@ const BuildingInfo = ({ data }) => {
               </span>
               <span>
                 <strong> Rating:</strong>{" "}
-                {(parseInt(item.amenities) +
-                  parseInt(item.cleanliness) +
-                  parseInt(item.privacy)) /
-                  3}
+                {rating(item)}
               </span>
             </figcaption>
           </figure>
