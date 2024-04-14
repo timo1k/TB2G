@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
-import { collection, getDocs,  orderBy, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase";
 // components
 import Accordion from "../_components/Accordion";
@@ -26,7 +26,6 @@ const Building = ({ params }) => {
   const [activeTab, setActiveTab] = useState(1);
 
   const floorArray = (users) => {
-
     if (users.length === 0) return [];
     let floorArray = [];
     for (let i = 0; i < users.length; i++) {
@@ -54,7 +53,6 @@ const Building = ({ params }) => {
         setUsers(filteredData);
         // console.log(filteredData);
 
-
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
         );
@@ -66,7 +64,6 @@ const Building = ({ params }) => {
         setClean(cleanValues);
         setAmen(amenValues);
         setPrivacy(privacyValues);
-
 
         // Calculate average values
         const cleanAvg =
@@ -86,41 +83,39 @@ const Building = ({ params }) => {
     }
 
     fetchItems();
-
   }, []);
 
   return (
-    <div className="min-w-full max-w-full min-h-full h-screen
+    <div
+      className="min-w-full max-w-full min-h-full h-screen
     bg-white
-    p-5">
-      <div className="flex flex-col items-center
+    p-5"
+    >
+      <div
+        className="flex flex-col items-center
       w-full
       text-center
-      font-bold text-6xl justify-center bg-white">
+      font-bold text-6xl justify-center bg-white"
+      >
         TB2G
       </div>
 
       <div className="mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
-
-        <h1 className="py-10 text-black text-3xl md:text-4xl lg:text-4xl xl:text-4xl">'
+        <h1 className="py-10 text-black text-3xl md:text-4xl lg:text-4xl xl:text-4xl">
           {id}
         </h1>
 
         <div className="flex flex-col justify-center text-center items-center ">
-
           <div className="">
-            <Tabs tabsArray={floorArray(users)}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
+            <Tabs
+              tabsArray={floorArray(users)}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
             />
 
-              {activeTab && (
-                  <Rating rating={users[activeTab - 1]}/>)}
-
+            {activeTab && <Rating rating={users[activeTab - 1]} />}
           </div>
-
         </div>
-
       </div>
     </div>
   );

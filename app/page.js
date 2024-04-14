@@ -123,42 +123,30 @@ const BuildingInfo = ({ data }) => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {data.map((item, index) => (
-        <div>
-          <br></br>
-          <figure className="w-[1000px] justify-between text-start overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
-            <figcaption className="border-t-2 border-black p-4">
-              <span>
-                <strong>Building:</strong> {item.Building}
-              </span>
-              <span>
-                <strong> Floor:</strong> {item.floor}
-              </span>
-              <span>
-                <strong> Rating:</strong> {rating(item)}
-              </span>
+        <div key={index}>
+          <br />
+          <figure className="relative w-[1000px] justify-between text-start overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
+            <figcaption className="border-t-2 border-black p-4 flex justify-between">
+              <div>
+                <span>
+                  <strong>Building:</strong> {item.Building}
+                </span>
+                <span>
+                  <strong> Floor:</strong> {item.floor}
+                </span>
+                <span>
+                  <strong> Rating:</strong> {rating(item)}
+                </span>
+              </div>
+              <div>
+                <span>
+                  <strong> Time Stamp:</strong>{" "}
+                </span>
+                <span>{item.createdAt.toDate().toLocaleString()}</span>
+              </div>
             </figcaption>
           </figure>
         </div>
-        // <div
-        //   key={index}
-        //   style={{
-        //     border: "1px solid #ccc",
-        //     borderRadius: "5px",
-        //     padding: "10px",
-        //     width: "1000px",
-        //     marginBottom: "10px",
-        //   }}
-        // >
-        //   <span>
-        //     <strong>Building:</strong> {item.Building}
-        //   </span>
-        //   <span>
-        //     <strong> Floor:</strong> {item.floor}
-        //   </span>
-        //   <span>
-        //     <strong> Rating:</strong> {item.rating}
-        //   </span>
-        // </div>
       ))}
       <br></br>
       <br></br>
