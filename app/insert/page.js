@@ -7,7 +7,6 @@ import Image from "next/image";
 const CreateListing = () => {
   const [title, setTitle] = useState("Male");
   const [description, setDescription] = useState("SERC");
-  const [selectedTag, setSelectedTag] = useState("1");
   const [floor, setFloor] = useState("1");
   const [error, setError] = useState("");
   const [section, setSection] = useState("Main");
@@ -41,10 +40,6 @@ const CreateListing = () => {
     setDescription(event.target.value);
   };
 
-  const handleTagChange = (event) => {
-    setSelectedTag(event.target.value);
-  };
-
   const uploadImage = async () => {
     try {
       // Save data to Firestore
@@ -62,7 +57,7 @@ const CreateListing = () => {
         // ambiance: ,
         // technology: ,
         // maintenence: ,
-        rating: selectedTag,
+        // rating: selectedTag,
       });
       console.log("Document written with ID: ", docRef.id);
 
@@ -241,26 +236,6 @@ const CreateListing = () => {
           <option value="5">5</option>
         </select>
         <br></br>
-        <h1>Rating (1-5)</h1>
-        <select
-          value={selectedTag}
-          onChange={handleTagChange}
-          className="input-field"
-          style={{
-            width: "100%",
-            padding: "8px",
-            marginBottom: "10px",
-            borderRadius: "5px",
-            border: "1px solid black", // Set the border color to black
-          }}
-        >
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-        <br />
         <br></br>
         <button
           type="button"
