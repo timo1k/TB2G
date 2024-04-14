@@ -140,7 +140,10 @@ const BuildingInfo = ({ data }) => {
         //     <strong> Rating:</strong> {item.rating}
         //   </span>
         // </div>
+        
       ))}
+      <br></br>
+      <br></br>
     </div>
   );
 };
