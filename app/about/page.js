@@ -121,6 +121,12 @@ const AboutPage = () => {
         </ul>
       </div>
       <div className="mb-8">
+        <h2 className="text-2xl font-bold mb-4">Future Capabilities</h2>
+        <p className="text-lg text-gray-700">
+          make mobile app + get acquired by temple uni.
+        </p>
+      </div>
+      <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">GitHub Repositories</h2>
         <p className="text-lg text-gray-700">
           Explore our GitHub repositories to view the source code:
@@ -149,6 +155,8 @@ const AboutPage = () => {
             this repo has the python code and the TB2G repo as a submodule
           </li>
         </ul>
+        <br></br>
+        <p>p.s. i dont know why we have two repos</p>
       </div>
       <AnimatedTooltipPreview />
     </div>

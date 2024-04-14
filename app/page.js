@@ -64,7 +64,10 @@ export default function Home() {
           ]}
         ></Marquee>
         <br></br>
-        <Accordion question="is your mom ?" answer="maybe" />
+        <Accordion
+          question="is your mom poop?"
+          answer={<CustomLink href="/about">go to poop page</CustomLink>}
+        />
 
         <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
           <Link href={"/Wachman"}>
@@ -115,7 +118,11 @@ const BuildingInfo = ({ data }) => {
                 <strong> Floor:</strong> {item.floor}
               </span>
               <span>
-                <strong> Rating:</strong> {item.rating}
+                <strong> Rating:</strong>{" "}
+                {(parseInt(item.amenities) +
+                  parseInt(item.cleanliness) +
+                  parseInt(item.privacy)) /
+                  3}
               </span>
             </figcaption>
           </figure>
@@ -140,10 +147,11 @@ const BuildingInfo = ({ data }) => {
         //     <strong> Rating:</strong> {item.rating}
         //   </span>
         // </div>
-        
       ))}
       <br></br>
       <br></br>
     </div>
   );
 };
+
+const CustomLink = ({ href, children }) => <Link href={href}>{children}</Link>;
