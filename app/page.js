@@ -73,11 +73,11 @@ export default function Home() {
         <Accordion question="is your mom ?" answer="maybe" />
 
         <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
-          <a href="/bathroom">
+          <Link href={"/bathroom"}>
             <div className="mr-4 mt-6">
               <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
             </div>
-          </a>
+          </Link>
           <div className="mr-4 mt-6">
             <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
           </div>
