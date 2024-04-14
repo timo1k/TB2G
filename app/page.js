@@ -78,7 +78,7 @@ export default function Home() {
               <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
             </div>
           </Link>
-          <Link href={"/Turtleman"}>
+          <Link href={"/Tuttleman"}>
             <div className="mr-4 mt-6">
               <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
             </div>
