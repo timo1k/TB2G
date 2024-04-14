@@ -38,11 +38,14 @@ export default function Home() {
 
   return (
     <main className="min-w-full max-w-full min-h-full h-screen bg-white">
-      <div
-        className="flex flex-col items-center w-full p-5 text-center
-      font-bold text-6xl justify-center"
-      >
-        TB2G
+      <div className="flex items-center justify-between w-full p-5 text-center font-bold text-6xl">
+        <Link href={"/insert"}>
+          <Button>CREATE ME</Button>
+        </Link>
+        <span>TB2G</span>
+        <Link href={"/about"}>
+          <Button>ABOUT ME</Button>
+        </Link>
       </div>
 
       <div
@@ -52,15 +55,6 @@ export default function Home() {
       items-center
       mx-10"
       >
-        <Link href={"/insert"}>
-          {" "}
-          <Button>CREATE ME</Button>
-        </Link>
-        <Link href={"/about"}>
-          {" "}
-          <Button>ABOUT ME</Button>
-        </Link>
-
         <Marquee
           items={[
             "Recently View",
@@ -69,28 +63,37 @@ export default function Home() {
             "Recently View",
           ]}
         ></Marquee>
-
+        <br></br>
         <Accordion question="is your mom ?" answer="maybe" />
 
         <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
           <Link href={"/Wachman"}>
             <div className="mr-4 mt-6">
-              <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
+              <ImageCard
+                imageUrl="https://live.staticflickr.com/3679/12726907403_b2182559c8_b.jpg"
+                children={<div>Wachman</div>}
+              />
             </div>
           </Link>
           <Link href={"/Tuttleman"}>
             <div className="mr-4 mt-6">
-              <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
+              <ImageCard
+                imageUrl="https://pbs.twimg.com/media/EyFEwFdXAAYSuhr.jpg:large"
+                children={<div>Tuttleman</div>}
+              />
             </div>
           </Link>
           <Link href={"/SERC"}>
             <div className="mr-4 mt-6">
-              <ImageCard imageUrl="https://media.licdn.com/dms/image/D5603AQGbxja6F1WDhg/profile-displayphoto-shrink_400_400/0/1665499408876?e=1718236800&v=beta&t=EKw8fFiXYtpMEhqKsAGOFBI113FklJI3w3d_WkIKzG4" />
+              <ImageCard
+                imageUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQt0k9SKvgfsoRgGrMYjB8SuU_MDEf3BUjA0Yv_rS0utg&s"
+                children={<div>SERC</div>}
+              />
             </div>
           </Link>
         </div>
         <br></br>
-        <h2>Reviews</h2>
+        <h2 className="font-bold">Reviews</h2>
         <BuildingInfo data={users} />
       </div>
     </main>
@@ -101,26 +104,42 @@ const BuildingInfo = ({ data }) => {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {data.map((item, index) => (
-        <div
-          key={index}
-          style={{
-            border: "1px solid #ccc",
-            borderRadius: "5px",
-            padding: "10px",
-            width: "1000px",
-            marginBottom: "10px",
-          }}
-        >
-          <span>
-            <strong>Building:</strong> {item.Building}
-          </span>
-          <span>
-            <strong> Floor:</strong> {item.floor}
-          </span>
-          <span>
-            <strong> Rating:</strong> {item.rating}
-          </span>
+        <div>
+          <br></br>
+          <figure className="w-[1000px] overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
+            <figcaption className="border-t-2 border-black p-4">
+              <span>
+                <strong>Building:</strong> {item.Building}
+              </span>
+              <span>
+                <strong> Floor:</strong> {item.floor}
+              </span>
+              <span>
+                <strong> Rating:</strong> {item.rating}
+              </span>
+            </figcaption>
+          </figure>
         </div>
+        // <div
+        //   key={index}
+        //   style={{
+        //     border: "1px solid #ccc",
+        //     borderRadius: "5px",
+        //     padding: "10px",
+        //     width: "1000px",
+        //     marginBottom: "10px",
+        //   }}
+        // >
+        //   <span>
+        //     <strong>Building:</strong> {item.Building}
+        //   </span>
+        //   <span>
+        //     <strong> Floor:</strong> {item.floor}
+        //   </span>
+        //   <span>
+        //     <strong> Rating:</strong> {item.rating}
+        //   </span>
+        // </div>
       ))}
     </div>
   );
