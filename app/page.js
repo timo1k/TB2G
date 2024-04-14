@@ -59,14 +59,16 @@ export default function Home() {
             "Recently View",
             "Recently View",
           ]}/>
-        <br></br>
 
       <div className=" flex flex-col justify-center text-center
-        items-center mx-10">
-          <Accordion
-            question="is your mom poop?"
-            answer={<CustomLink href="/about">go to poop page</CustomLink>}
-          />
+        items-center m-10">
+
+        <Link href={"/searched"}>
+          <Button>
+            I Need to SHIT FAST
+          </Button>
+        </Link>
+
           <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
             <Link href={"/Wachman"}>
               <div className="mr-4 mt-6">
