@@ -6,7 +6,7 @@ import Image from "next/image";
 
 const CreateListing = () => {
   const [title, setTitle] = useState("Male");
-  const [description, setDescription] = useState("Johnson Hall");
+  const [description, setDescription] = useState("SERC");
   const [selectedTag, setSelectedTag] = useState("1");
   const [floor, setFloor] = useState("1");
   const [error, setError] = useState("");
@@ -103,6 +103,8 @@ const CreateListing = () => {
           height={100}
           style={{ display: "block", margin: "auto", marginBottom: "20px" }}
         />
+        1 = worst, 2 = moderately worse, 3 = neutral <br></br> 4 = moderately
+        better, 5 = best
         {error && <p style={{ color: "red" }}>{error}</p>}
         <br></br>
         <h1>Gender</h1>
@@ -135,11 +137,9 @@ const CreateListing = () => {
             border: "1px solid black", // Set the border color to black
           }}
         >
-          <option value="Johnson Hall">Johnson Hall</option>
-          <option value="Smith Building">Smith Building</option>
-          <option value="Anderson Tower">Anderson Tower</option>
+          <option value="SERC">SERC</option>
+          <option value="Wachman">Wachman</option>
           <option value="Tuttleman">Tuttleman</option>
-          <option value="Serc">Serc</option>
         </select>
         <br />
         <h1>Section</h1>
@@ -181,7 +181,7 @@ const CreateListing = () => {
           <option value="5">5</option>
         </select>
         <br></br>
-        <h1>Amenities (1-5 : worst-best)</h1>
+        <h1>Amenities (1-5)</h1>
         <select
           value={amen}
           onChange={handleAmenChange}
@@ -201,7 +201,7 @@ const CreateListing = () => {
           <option value="5">5</option>
         </select>
         <br></br>
-        <h1>Privacy (1-5 : worst-best)</h1>
+        <h1>Privacy (1-5)</h1>
         <select
           value={privacy}
           onChange={handlePrivacyChange}
@@ -221,7 +221,7 @@ const CreateListing = () => {
           <option value="5">5</option>
         </select>
         <br></br>
-        <h1>Cleanliness (1-5 : worst-best)</h1>
+        <h1>Cleanliness (1-5)</h1>
         <select
           value={clean}
           onChange={handleCleanChange}
@@ -241,7 +241,7 @@ const CreateListing = () => {
           <option value="5">5</option>
         </select>
         <br></br>
-        <h1>Rating (1-5 : worst-best)</h1>
+        <h1>Rating (1-5)</h1>
         <select
           value={selectedTag}
           onChange={handleTagChange}
