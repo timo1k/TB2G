@@ -233,14 +233,17 @@ const Building = ({ params }) => {
 
             {activeTab && <Rating rating={users[activeTab - 1]} />}
           </div>
-          <br></br>
+
           <br></br>
           <br></br>
           {msg}
 
           <br></br>
+          <br></br>
+          <br></br>
         </div>
       </div>
+      <br></br>
     </div>
   );
 };
