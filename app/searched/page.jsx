@@ -6,13 +6,15 @@ import MoonLoader from "react-spinners/MoonLoader";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import BarLoader from "react-spinners/BarLoader";
 import ClipLoader from "react-spinners/ClipLoader";
-import HashLoader from "react-spinners/HashLoader"
+import HashLoader from "react-spinners/HashLoader";
+import axios from "axios"; // Don't forget to import axios
 
 const Searched = ({ params }) => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
   const [load, setLoad] = useState(true);
   const [msg, setMsg] = useState();
+  const [data, setData] = useState(null); // New state to hold endpoint data
 
   const items = ["recomendations", "distance"];
 
@@ -34,8 +36,25 @@ const Searched = ({ params }) => {
         </div>
       );
     }
+
     getLocation();
+    dataAzure();
   }, []);
+
+  const dataAzure = async () => {
+    try {
+      const response = await axios.get(
+        "https://tb2g.azurewebsites.net/startFunction"
+      );
+
+      //TODO make server side and not expose endpoint
+
+      setData(response.data); // Set data from endpoint to state
+      console.log(response.data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   // get current location
   function getLocation() {
@@ -147,6 +166,44 @@ const Searched = ({ params }) => {
           <div id="map" style={{ width: "600px", height: "450px", zIndex: 0 }}>
             {msg}
           </div>
+        </div>
+        <br></br>
+        <br></br>
+        <div>
+          {data ? (
+            <div>
+              <div className="text-center font-bold">
+                <h1>Top Bathrooms - Recommended by our AI</h1>
+                <br></br>
+              </div>
+              {data.map((item, index) => (
+                <div>
+                  <div key={index} className="flex justify-center">
+                    <figure className="relative w-[1000px] justify-between text-start overflow-hidden rounded-base border-2 border-black bg-main shadow-base text-white">
+                      <figcaption className="border-t-2 border-black p-4 flex justify-between">
+                        <span>
+                          <strong>Building:</strong> {item[0]}
+                        </span>
+                        <span>
+                          <strong> Floor:</strong> {item[1]}
+                        </span>
+                        <span>
+                          <strong> Rating:</strong> {item[3]}
+                        </span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <br></br>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex justify-center h-400 w-640 mt-48">
+              <br></br>
+              <MoonLoader color="#9E1B34" />
+            </div>
+          )}
+          <br></br>
         </div>
       </div>
     </main>
