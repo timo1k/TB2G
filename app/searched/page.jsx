@@ -5,12 +5,39 @@ import Select from "../_components/Select";
 const Searched = ({ params }) => {
   const [latitude, setLatitude] = useState(null);
   const [longitude, setLongitude] = useState(null);
+  const [load, setLoad] = useState(true);
+  const [msg, setMsg] = useState();
 
   const items = ["recomendations", "distance"];
 
   useEffect(() => {
+    if (load === true) {
+      setMsg(
+        <div className="flex justify-center">
+          <span className="loading loading-infinity loading-lg"></span>
+          <br></br>
+          <span className="loading loading-spinner text-primary"></span>
+          <br></br>
+          <span className="loading loading-spinner text-secondary"></span>
+          <br></br>
+          <span className="loading loading-spinner text-accent"></span>
+          <br></br>
+          <span className="loading loading-spinner text-neutral"></span>
+          <br></br>
+          <span className="loading loading-spinner text-info"></span>
+          <br></br>
+          <span className="loading loading-spinner text-success"></span>
+          <br></br>
+          <span className="loading loading-spinner text-warning"></span>
+          <br></br>
+          <span className="loading loading-spinner text-error"></span>
+          <br></br>
+          <span className="loading loading-infinity loading-lg"></span>
+        </div>
+      );
+    }
     getLocation();
-  }, []);
+  }, [load]);
 
   // get current location
   function getLocation() {
@@ -37,11 +64,16 @@ const Searched = ({ params }) => {
   }
 
   function initializeMap(lat, lon) {
+    setLoad(false);
+    if (load === false) {
+      setMsg(<div></div>);
+    }
+
     const locations = [
       ["Charles", 39.98222, -75.15535],
       ["Tuttleman", 39.9803572, -75.1541994],
       ["Wachman", 39.98079, -75.15739],
-      ["SERC", 39.981991, -75.153053]
+      ["SERC", 39.981991, -75.153053],
     ];
 
     const map = new window.google.maps.Map(document.getElementById("map"), {
@@ -99,9 +131,9 @@ const Searched = ({ params }) => {
   }
 
   return (
-    <main className="min-w-full max-w-full min-h-full h-screen bg-white"> 
-      <div className="flex flex-col items-center w-full text-center p-5 font-bold text-6xl justify-center">    
-      <span>TB2G</span>
+    <main className="min-w-full max-w-full min-h-full h-screen bg-white">
+      <div className="flex flex-col items-center w-full text-center p-5 font-bold text-6xl justify-center">
+        <span>TB2G</span>
       </div>
       <div className="bg-main w-full min-h-24 border-2 border-black"></div>
 
@@ -114,7 +146,9 @@ const Searched = ({ params }) => {
         </div>
 
         <div className="flex justify-center mt-4">
-          <div id="map" style={{ width: "600px", height: "450px", zIndex: 0 }}></div>
+          <div id="map" style={{ width: "600px", height: "450px", zIndex: 0 }}>
+            {msg}
+          </div>
         </div>
       </div>
     </main>
