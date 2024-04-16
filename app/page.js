@@ -50,11 +50,18 @@ export default function Home() {
 
       <div className="flex flex-col items-center w-full ">
         <div className="bg-main w-full min-h-24 border-2 border-black"></div>
+
         <div className="flex">
-          <Link className="block absolute left-[44%] translate-y-[-50%] translate-x-[-50%]" href={"/searched"}>
+          <Link
+            className="block absolute left-[44%] translate-y-[-50%] translate-x-[-50%]"
+            href={"/searched"}
+          >
             <Button>I Need to SHIT FAST</Button>
           </Link>
-          <Link className="block absolute left-[60%] translate-y-[-50%] translate-x-[-50%]" href={"/ml"}>
+          <Link
+            className="block absolute left-[60%] translate-y-[-50%] translate-x-[-50%]"
+            href={"/ml"}
+          >
             <Button>Have the Best Shit!</Button>
           </Link>
         </div>
@@ -64,7 +71,6 @@ export default function Home() {
         className=" flex flex-col justify-center text-center
         items-center m-10"
       >
-
         <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
           <Link href={"/Wachman"}>
             <div className="mr-4 mt-6">
@@ -92,23 +98,22 @@ export default function Home() {
           </Link>
         </div>
         <br></br>
-        </div>
+      </div>
 
+      <Marquee
+        items={[
+          "Lastest Reviews",
+          "Lastest Reviews",
+          "Lastest Reviews",
+          "Lastest Reviews",
+          "Lastest Reviews",
+          "Lastest Reviews",
+        ]}
+      />
 
-        <Marquee
-          items={[
-            "Lastest Reviews",
-            "Lastest Reviews",
-            "Lastest Reviews",
-            "Lastest Reviews",
-            "Lastest Reviews",
-            "Lastest Reviews",
-          ]}
-        />
-
-        <div className="flex items-center justify-center">
-          <BuildingInfo data={users} />
-        </div>
+      <div className="flex items-center justify-center">
+        <BuildingInfo data={users} />
+      </div>
     </main>
   );
 }

@@ -16,6 +16,8 @@ const Building = ({ params }) => {
   //fetch data for dynamic stuff
   const [users, setUsers] = useState([]);
   const [floorData, setFloorData] = useState({});
+  const [msg, setMsg] = useState();
+  const [data, setData] = useState();
 
   const [clean, setClean] = useState([]);
   const [amen, setAmen] = useState([]);
@@ -65,6 +67,105 @@ const Building = ({ params }) => {
         }, {});
         setFloorData(floorDataMap);
         console.log(floorDataMap);
+
+        // Define the time intervals and their corresponding hour values
+        const timeIntervals = {
+          "12AM": 0, // Midnight
+          "1AM": 1,
+          "2AM": 2,
+          "3AM": 3,
+          "4AM": 4,
+          "5AM": 5,
+          "6AM": 6,
+          "7AM": 7,
+          "8AM": 8,
+          "9AM": 9,
+          "10AM": 10,
+          "11AM": 11,
+          "12PM": 12,
+          "1PM": 13,
+          "2PM": 14,
+          "3PM": 15,
+          "4PM": 16,
+          "5PM": 17,
+          "6PM": 18,
+          "7PM": 19,
+          "8PM": 20,
+          "9PM": 21,
+          "10PM": 22,
+          "11PM": 23, // 11PM
+        };
+
+        // Function to get the hour value for a given time interval
+        function getHourValue(timeInterval) {
+          return timeIntervals[timeInterval];
+        }
+
+        const hourCounts = new Array(24).fill(0);
+
+        // Iterate through each item in the floor data
+        for (const floor in floorDataMap) {
+          const floorItems = floorDataMap[floor];
+          floorItems.forEach((item) => {
+            // Access the createdAt field and convert it to a Date object
+            const timestamp = item.createdAt.toDate().toLocaleString();
+
+            // Get the time part of the timestamp
+            const timePart = timestamp.split(", ")[1];
+
+            // Extract the hour component from the time
+            var hour = parseInt(timePart.split(":")[0]);
+
+            // Adjust the hour for PM times
+            if (timePart.includes("PM") && hour !== 12) {
+              hour += 12;
+            }
+
+            // Increment the corresponding slot in the array by 1
+            hourCounts[hour]++;
+          });
+        }
+
+        console.log(hourCounts); // This will contain the counts for each hour slot
+
+        setMsg(
+          <BarChart
+            xAxis={[
+              {
+                scaleType: "band",
+                data: [
+                  "12AM", // Midnight
+                  "1AM",
+                  "2AM",
+                  "3AM",
+                  "4AM",
+                  "5AM",
+                  "6AM",
+                  "7AM",
+                  "8AM",
+                  "9AM",
+                  "10AM",
+                  "11AM",
+                  "12PM",
+                  "1PM",
+                  "2PM",
+                  "3PM",
+                  "4PM",
+                  "5PM",
+                  "6PM",
+                  "7PM",
+                  "8PM",
+                  "9PM",
+                  "10PM",
+                  "11PM",
+                ],
+              },
+            ]}
+            series={[{ data: hourCounts, label: "Activity" }]}
+            width={600}
+            height={350}
+          />
+        );
 
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
@@ -135,32 +236,7 @@ const Building = ({ params }) => {
           <br></br>
           <br></br>
           <br></br>
-
-          <BarChart
-            xAxis={[
-              {
-                scaleType: "band",
-                data: [
-                  "8AM",
-                  "9AM",
-                  "10 AM",
-                  "11AM",
-                  "12PM",
-                  "1PM",
-                  "2PM",
-                  "3PM",
-                  "4PM",
-                  "5PM",
-                  "6PM",
-                  "7PM",
-                  "8PM",
-                ],
-              },
-            ]}
-            series={[{ data: [3, 4, 1, 6, 5], label: "Activity" }]}
-            width={600}
-            height={350}
-          />
+          {msg}
 
           <br></br>
         </div>
