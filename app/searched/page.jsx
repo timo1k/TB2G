@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Select from "../_components/Select";
+import Image from "next/image";
 
 const Searched = ({ params }) => {
   const [latitude, setLatitude] = useState(null);
@@ -13,31 +14,15 @@ const Searched = ({ params }) => {
   useEffect(() => {
     if (load === true) {
       setMsg(
-        <div className="flex justify-center">
-          <span className="loading loading-infinity loading-lg"></span>
-          <br></br>
-          <span className="loading loading-spinner text-primary"></span>
-          <br></br>
-          <span className="loading loading-spinner text-secondary"></span>
-          <br></br>
-          <span className="loading loading-spinner text-accent"></span>
-          <br></br>
-          <span className="loading loading-spinner text-neutral"></span>
-          <br></br>
-          <span className="loading loading-spinner text-info"></span>
-          <br></br>
-          <span className="loading loading-spinner text-success"></span>
-          <br></br>
-          <span className="loading loading-spinner text-warning"></span>
-          <br></br>
-          <span className="loading loading-spinner text-error"></span>
-          <br></br>
-          <span className="loading loading-infinity loading-lg"></span>
-        </div>
+        <Image 
+        src="/loading.gif"
+        width={400}
+        height={400}
+        />
       );
     }
     getLocation();
-  }, [load]);
+  }, []);
 
   // get current location
   function getLocation() {
