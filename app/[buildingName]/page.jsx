@@ -6,6 +6,7 @@ import { db } from "../firebase";
 import Accordion from "../_components/Accordion";
 import Rating from "../_components/Rating"; // Import the Rating component
 import Tabs from "../_components/Tabs";
+import Bar from "../_components/Bar";
 
 const Building = ({ params }) => {
   // Accessing the id from params
@@ -13,7 +14,8 @@ const Building = ({ params }) => {
 
   //fetch data for dynamic stuff
   const [users, setUsers] = useState([]);
-  const [floorData, setFloorData] = useState([]);
+  const [floorData, setFloorData] = useState({});
+  const [msg, setMsg] = useState();
 
   const [clean, setClean] = useState([]);
   const [amen, setAmen] = useState([]);
@@ -51,7 +53,20 @@ const Building = ({ params }) => {
         const filteredData = data.filter((item) => item.Building === id);
 
         setUsers(filteredData);
-        // console.log(filteredData);
+        console.log(filteredData);
+
+        const floorDataMap = filteredData.reduce((acc, item) => {
+          const floor = item.floor;
+          if (!acc[floor]) {
+            acc[floor] = [];
+          }
+          acc[floor].push(item);
+          return acc;
+        }, {});
+        setFloorData(floorDataMap);
+        console.log(floorDataMap);
+
+        setMsg(<Bar data={floorDataMap} />);
 
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
@@ -64,6 +79,10 @@ const Building = ({ params }) => {
         setClean(cleanValues);
         setAmen(amenValues);
         setPrivacy(privacyValues);
+
+        console.log("clean: " + cleanValues);
+        console.log("amen: " + amenValues);
+        console.log("privacy: " + privacyValues);
 
         // Calculate average values
         const cleanAvg =
@@ -115,6 +134,13 @@ const Building = ({ params }) => {
 
             {activeTab && <Rating rating={users[activeTab - 1]} />}
           </div>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          {msg}
+
+          <br></br>
         </div>
       </div>
     </div>
