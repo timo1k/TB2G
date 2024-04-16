@@ -108,7 +108,7 @@ const Searched = ({ params }) => {
       <div className="mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
         <div className="flex justify-center mt-6">
           <div className="flex flex-col items-center w-full text-center font-bold text-4xl justify-center bg-white">
-            Best Bathroom to shit near YOU
+            Best Bathroom to 💩 near YOU
           </div>
           <Select items={items} />
         </div>

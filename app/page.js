@@ -49,20 +49,13 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col items-center w-full ">
-        <div className="bg-main w-full min-h-24 border-2 border-black"></div>
-
-        <div className="flex">
+        <div className="bg-main w-full min-h-24 border-4 border-black"></div>
+        <div>
           <Link
-            className="block absolute left-[44%] translate-y-[-50%] translate-x-[-50%]"
+            className="block absolute left-1/2 translate-y-[-50%] translate-x-[-50%]"
             href={"/searched"}
           >
-            <Button>I Need to SHIT FAST</Button>
-          </Link>
-          <Link
-            className="block absolute left-[60%] translate-y-[-50%] translate-x-[-50%]"
-            href={"/ml"}
-          >
-            <Button>Have the Best Shit!</Button>
+            <Button>Got 2 Go?</Button>
           </Link>
         </div>
       </div>
