@@ -6,6 +6,7 @@ import MoonLoader from "react-spinners/MoonLoader";
 import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 import BarLoader from "react-spinners/BarLoader";
 import ClipLoader from "react-spinners/ClipLoader";
+import HashLoader from "react-spinners/HashLoader"
 
 const Searched = ({ params }) => {
   const [latitude, setLatitude] = useState(null);
@@ -23,11 +24,13 @@ const Searched = ({ params }) => {
         // width={400}
         // height={400}
         // />
-        <div>
+        <div className="flex justify-center h-400 w-640 mt-48">
+          <br></br>
           <MoonLoader color="#9E1B34" />
-          <ClimbingBoxLoader color="#9E1B34" />
-          <BarLoader color="#9E1B34" />
-          <ClipLoader color="#9E1B34" />
+          {/* <HashLoader color="#9E1B34" /> */}
+          {/* <ClimbingBoxLoader color="#9E1B34" /> */}
+          {/* <BarLoader color="#9E1B34" /> */}
+          {/* <ClipLoader color="#9E1B34" /> */}
         </div>
       );
     }
