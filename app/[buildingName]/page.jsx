@@ -7,13 +7,15 @@ import Accordion from "../_components/Accordion";
 import Rating from "../_components/Rating"; // Import the Rating component
 import Tabs from "../_components/Tabs";
 
+import { BarChart } from "@mui/x-charts/BarChart";
+
 const Building = ({ params }) => {
   // Accessing the id from params
   const id = params.buildingName;
 
   //fetch data for dynamic stuff
   const [users, setUsers] = useState([]);
-  const [floorData, setFloorData] = useState([]);
+  const [floorData, setFloorData] = useState({});
 
   const [clean, setClean] = useState([]);
   const [amen, setAmen] = useState([]);
@@ -51,7 +53,18 @@ const Building = ({ params }) => {
         const filteredData = data.filter((item) => item.Building === id);
 
         setUsers(filteredData);
-        // console.log(filteredData);
+        console.log(filteredData);
+
+        const floorDataMap = filteredData.reduce((acc, item) => {
+          const floor = item.floor;
+          if (!acc[floor]) {
+            acc[floor] = [];
+          }
+          acc[floor].push(item);
+          return acc;
+        }, {});
+        setFloorData(floorDataMap);
+        console.log(floorDataMap);
 
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
@@ -64,6 +77,10 @@ const Building = ({ params }) => {
         setClean(cleanValues);
         setAmen(amenValues);
         setPrivacy(privacyValues);
+
+        console.log("clean: " + cleanValues);
+        console.log("amen: " + amenValues);
+        console.log("privacy: " + privacyValues);
 
         // Calculate average values
         const cleanAvg =
@@ -115,6 +132,37 @@ const Building = ({ params }) => {
 
             {activeTab && <Rating rating={users[activeTab - 1]} />}
           </div>
+          <br></br>
+          <br></br>
+          <br></br>
+
+          <BarChart
+            xAxis={[
+              {
+                scaleType: "band",
+                data: [
+                  "8AM",
+                  "9AM",
+                  "10 AM",
+                  "11AM",
+                  "12PM",
+                  "1PM",
+                  "2PM",
+                  "3PM",
+                  "4PM",
+                  "5PM",
+                  "6PM",
+                  "7PM",
+                  "8PM",
+                ],
+              },
+            ]}
+            series={[{ data: [3, 4, 1, 6, 5], label: "Activity" }]}
+            width={600}
+            height={350}
+          />
+
+          <br></br>
         </div>
       </div>
     </div>

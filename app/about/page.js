@@ -53,37 +53,15 @@ const AboutPage = () => {
         <h2 className="text-2xl font-bold mb-4">How It Works</h2>
         <p className="text-lg text-gray-700 mb-4">Using TB2G is simple:</p>
         <ol className="list-decimal list-inside text-lg text-gray-700">
-          <li>
-            Sign up for an account or log in with your existing credentials.
-          </li>
-          <li>
-            Browse through the list of available bathrooms or search for a
-            specific location.
-          </li>
           <li>Rate and review bathrooms based on your experience.</li>
-          <li>
-            Explore user-generated posts and recommendations to discover hidden
-            gems.
-          </li>
+          <li>Explore user-generated posts</li>
+          <li>Explore statisctics</li>
           <li>
             Utilize the ML prediction feature to find the optimal restroom for
             your needs.
           </li>
+          <li>Find the closest bathroom.</li>
         </ol>
-      </div>
-
-      <div className="mb-8">
-        <h2 className="text-2xl font-bold mb-4">Join the Community</h2>
-        <p className="text-lg text-gray-700">
-          Download TB2G today and become part of the Temple Bathroom 2 Go
-          community! Whether you're rushing to class or taking a leisurely
-          stroll through campus, TB2G ensures that your restroom breaks are
-          comfortable, convenient, and stress-free.
-        </p>
-        <p className="text-lg text-gray-700 mt-4">
-          Ready to experience Temple's bathrooms like never before? Get started
-          with TB2G now!
-        </p>
       </div>
 
       <div className="mb-8">
@@ -123,7 +101,9 @@ const AboutPage = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-bold mb-4">Future Capabilities</h2>
         <p className="text-lg text-gray-700">
-          make mobile app + get acquired by temple uni.
+          - create reviews for bathrooms for more buildings and by each bathroom
+          and not floor
+          <br></br>- make mobile app + get acquired by temple uni.
         </p>
       </div>
       <div className="mb-8">
@@ -156,7 +136,7 @@ const AboutPage = () => {
           </li>
         </ul>
         <br></br>
-        <p>p.s. i dont know why we have two repos</p>
+        <p>p.s. dont ask why two repos</p>
       </div>
       <AnimatedTooltipPreview />
     </div>
