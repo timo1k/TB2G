@@ -45,7 +45,7 @@ const Searched = ({ params }) => {
     ];
 
     const map = new window.google.maps.Map(document.getElementById("map"), {
-      zoom: 10,
+      zoom: 15,
       center: { lat: lat, lng: lon },
       mapTypeId: window.google.maps.MapTypeId.ROADMAP,
       // Apply custom style to set z-index
