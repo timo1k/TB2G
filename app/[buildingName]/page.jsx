@@ -6,7 +6,8 @@ import { db } from "../firebase";
 import Accordion from "../_components/Accordion";
 import Rating from "../_components/Rating"; // Import the Rating component
 import Tabs from "../_components/Tabs";
-import Bar from "../_components/Bar";
+
+import { BarChart } from "@mui/x-charts/BarChart";
 
 const Building = ({ params }) => {
   // Accessing the id from params
@@ -15,7 +16,6 @@ const Building = ({ params }) => {
   //fetch data for dynamic stuff
   const [users, setUsers] = useState([]);
   const [floorData, setFloorData] = useState({});
-  const [msg, setMsg] = useState();
 
   const [clean, setClean] = useState([]);
   const [amen, setAmen] = useState([]);
@@ -65,8 +65,6 @@ const Building = ({ params }) => {
         }, {});
         setFloorData(floorDataMap);
         console.log(floorDataMap);
-
-        setMsg(<Bar data={floorDataMap} />);
 
         const cleanValues = filteredData.map((item) =>
           parseInt(item.cleanliness)
@@ -138,7 +136,31 @@ const Building = ({ params }) => {
           <br></br>
           <br></br>
 
-          {msg}
+          <BarChart
+            xAxis={[
+              {
+                scaleType: "band",
+                data: [
+                  "8AM",
+                  "9AM",
+                  "10 AM",
+                  "11AM",
+                  "12PM",
+                  "1PM",
+                  "2PM",
+                  "3PM",
+                  "4PM",
+                  "5PM",
+                  "6PM",
+                  "7PM",
+                  "8PM",
+                ],
+              },
+            ]}
+            series={[{ data: [3, 4, 1, 6, 5], label: "Activity" }]}
+            width={600}
+            height={350}
+          />
 
           <br></br>
         </div>
