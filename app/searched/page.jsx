@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from "react";
 import Select from "../_components/Select";
 import Image from "next/image";
+import MoonLoader from "react-spinners/MoonLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
+import BarLoader from "react-spinners/BarLoader";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Searched = ({ params }) => {
   const [latitude, setLatitude] = useState(null);
@@ -14,11 +18,17 @@ const Searched = ({ params }) => {
   useEffect(() => {
     if (load === true) {
       setMsg(
-        <Image 
-        src="/loading.gif"
-        width={600}
-        height={400}
-        />
+        // <Image
+        // src="/loading.gif"
+        // width={400}
+        // height={400}
+        // />
+        <div>
+          <MoonLoader color="#9E1B34" />
+          <ClimbingBoxLoader color="#9E1B34" />
+          <BarLoader color="#9E1B34" />
+          <ClipLoader color="#9E1B34" />
+        </div>
       );
     }
     getLocation();

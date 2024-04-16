@@ -58,9 +58,9 @@ const AboutPage = () => {
           <li>Explore statisctics</li>
           <li>
             Utilize the ML prediction feature to find the optimal restroom for
-            your needs.
+            your needs
           </li>
-          <li>Find the closest bathroom.</li>
+          <li>Find the closest bathroom</li>
         </ol>
       </div>
 
@@ -88,13 +88,13 @@ const AboutPage = () => {
         <p className="text-lg text-gray-700 mt-4">Machine Learning:</p>
         <ul className="list-disc list-inside text-lg text-gray-700">
           <li>
-            Say X Model - A machine learning model (replace "Say X Model" with
-            the actual model name) trained to predict the best bathrooms based
-            on user ratings and other factors.
+            A machine learning model (SVD) trained to predict the best bathrooms
+            based on user ratings and other factors.
           </li>
           <li>
             Python Server - A backend server implemented in Python to handle
             machine learning predictions and other server-side operations.
+            Hosted on Azure!
           </li>
         </ul>
       </div>
@@ -104,6 +104,8 @@ const AboutPage = () => {
           - create reviews for bathrooms for more buildings and by each bathroom
           and not floor
           <br></br>- make mobile app + get acquired by temple uni.
+          <br></br>- fix activity graph to show activity by floor
+          <br></br>- add sorting to see best reviews
         </p>
       </div>
       <div className="mb-8">
