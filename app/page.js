@@ -48,30 +48,22 @@ export default function Home() {
         </Link>
       </div>
 
-      <Marquee
-        items={[
-          "Recently View",
-          "Recently View",
-          "Recently View",
-          "Recently View",
-          "Recently View",
-          "Recently View",
-          "Recently View",
-        ]}
-      />
+      <div className="flex flex-col items-center w-full ">
+        <div className="bg-main w-full min-h-24 border-2 border-black"></div>
+        <div className="flex">
+          <Link className="block absolute left-[44%] translate-y-[-50%] translate-x-[-50%]" href={"/searched"}>
+            <Button>I Need to SHIT FAST</Button>
+          </Link>
+          <Link className="block absolute left-[60%] translate-y-[-50%] translate-x-[-50%]" href={"/ml"}>
+            <Button>Have the Best Shit!</Button>
+          </Link>
+        </div>
+      </div>
 
       <div
         className=" flex flex-col justify-center text-center
         items-center m-10"
       >
-        <Link href={"/searched"}>
-          <Button>I Need to SHIT FAST</Button>
-        </Link>
-        <br></br>
-
-        <Link href={"/ml"}>
-          <Button>Have the Best Shit!</Button>
-        </Link>
 
         <div className="flex justify-center text-center items-center mx-10 sm:mx-20 md:mx-40 lg:mx-60 xl:mx-80">
           <Link href={"/Wachman"}>
@@ -100,11 +92,23 @@ export default function Home() {
           </Link>
         </div>
         <br></br>
+        </div>
 
-        <h2 className="font-bold">Reviews</h2>
 
-        <BuildingInfo data={users} />
-      </div>
+        <Marquee
+          items={[
+            "Lastest Reviews",
+            "Lastest Reviews",
+            "Lastest Reviews",
+            "Lastest Reviews",
+            "Lastest Reviews",
+            "Lastest Reviews",
+          ]}
+        />
+
+        <div className="flex items-center justify-center">
+          <BuildingInfo data={users} />
+        </div>
     </main>
   );
 }

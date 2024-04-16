@@ -41,9 +41,9 @@ export default function Rating({ rating }) {
         </div>
 
         <div className="flex flex-col gap-3 justify-evenly text-end">
-          <div className="bg-black w-80">a</div>
-          <div className="bg-black w-80">a</div>
-          <div className="bg-black w-80">a</div>
+          <div className="bg-black w-80">&nbsp;</div>
+          <div className="bg-black w-80">&nbsp;</div>
+          <div className="bg-black w-80">&nbsp;</div>
         </div>
 
         <div className="flex flex-col gap-3 justify-evenly text-end">
