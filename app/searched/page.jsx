@@ -16,7 +16,7 @@ const Searched = ({ params }) => {
       setMsg(
         <Image 
         src="/loading.gif"
-        width={400}
+        width={600}
         height={400}
         />
       );
