@@ -188,7 +188,7 @@ const Searched = ({ params }) => {
                           <strong> Floor:</strong> {item[1]}
                         </span>
                         <span>
-                          <strong> Rating:</strong> {item[3]}
+                          <strong> Rating:</strong> {Math.round(item[3] * 100) / 100};
                         </span>
                       </figcaption>
                     </figure>
